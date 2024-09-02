@@ -123,6 +123,9 @@ typedef struct
   window_t window; // 发送和接受窗口
   struct sock_queue *half_queue;
   struct sock_queue *full_queue;
+  int ack;
+  int seq;
+
 } tju_tcp_t;
 
 typedef struct sock_node

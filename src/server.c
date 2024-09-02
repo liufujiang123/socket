@@ -5,22 +5,22 @@ int main(int argc, char **argv)
 {
   // 开启仿真环境
   startSimulation();
-  printf("startSimulation\n");
+  // printf("startSimulation\n");
 
   tju_tcp_t *my_server = tju_socket();
-  printf("my_tcp state %d\n", my_server->state);
+  // printf("my_tcp state %d\n", my_server->state);
 
   tju_sock_addr bind_addr;
   bind_addr.ip = inet_network("172.17.0.3");
   bind_addr.port = 1234;
-
   tju_bind(my_server, bind_addr);
-  printf("my_server state %d\n", my_server->state);
+  // printf("my_server state %d\n", my_server->state);
 
   tju_listen(my_server);
-  printf("abc");
+
   tju_tcp_t *new_conn = tju_accept(my_server);
-  printf("new_conn state %d\n", new_conn->state);
+
+  // printf("new_conn state %d\n", new_conn->state);
 
   // uint32_t conn_ip;
   // uint16_t conn_port;
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
   // printf("new_conn established_remote_addr ip %d port %d\n", conn_ip, conn_port);
 
   sleep(5);
-
+  printf("ready to send\n");
   tju_send(new_conn, "hello world", 12);
   tju_send(new_conn, "hello tju", 10);
 

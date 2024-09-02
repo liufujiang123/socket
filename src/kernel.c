@@ -7,6 +7,8 @@ void onTCPPocket(char *pkt)
   // 当我们收到TCP包时 包中 源IP 源端口 是发送方的 也就是我们眼里的 远程(remote) IP和端口
   uint16_t remote_port = get_src(pkt);
   uint16_t local_port = get_dst(pkt);
+  // printf("源端口和目的端口%d  %d \n", local_port, remote_port);
+
   // remote ip 和 local ip 是读IP 数据包得到的 仿真的话这里直接根据hostname判断
 
   char hostname[8];
@@ -31,6 +33,7 @@ void onTCPPocket(char *pkt)
   if (established_socks[hashval] != NULL)
   {
     tju_handle_packet(established_socks[hashval], pkt);
+    printf("tju_handle_packet(established_socks[hashval], pkt)\n");
     return;
   }
 
@@ -39,6 +42,7 @@ void onTCPPocket(char *pkt)
   if (listen_socks[hashval] != NULL)
   {
     tju_handle_packet(listen_socks[hashval], pkt);
+    printf("tju_handle_packet(listen_socks[hashval], pkt)\n");
     return;
   }
 
@@ -186,5 +190,8 @@ void startSimulation()
 int cal_hash(uint32_t local_ip, uint16_t local_port, uint32_t remote_ip, uint16_t remote_port)
 {
   // 实际上肯定不是这么算的
-  return ((int)local_ip + (int)local_port + (int)remote_ip + (int)remote_port) % MAX_SOCK;
+  int ret;
+  ret = ((int)local_ip + (int)local_port + (int)remote_ip + (int)remote_port) % MAX_SOCK;
+  if (ret < 0)
+    return ret + MAX_SOCK;
 }

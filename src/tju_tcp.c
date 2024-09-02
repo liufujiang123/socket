@@ -119,7 +119,8 @@ int tju_connect(tju_tcp_t *sock, tju_sock_addr target_addr)
   local_addr.ip = inet_network("172.17.0.2");
   local_addr.port = 5678; // 连接方进行connect连接的时候 内核中是随机分配一个可用的端口
   sock->established_local_addr = local_addr;
-
+  int hashval = cal_hash(local_addr.ip, local_addr.port, 0, 0);
+  listen_socks[hashval] = sock;
   // 这里也不能直接建立连接 需要经过三次握手
   // 实际在linux中 connect调用后 会进入一个while循环
   // 循环跳出的条件是socket的状态变为ESTABLISHED 表面看上去就是 正在连接中 阻塞
@@ -131,7 +132,9 @@ int tju_connect(tju_tcp_t *sock, tju_sock_addr target_addr)
   // ack
   uint16_t plen = DEFAULT_HEADER_LEN;
   char *msg;
-  msg = create_packet_buf(sock->established_local_addr.port, sock->established_remote_addr.port, CLIENT_ISN, 0,
+  sock->seq = CLIENT_ISN;
+  sock->ack = 0;
+  msg = create_packet_buf(sock->established_local_addr.port, sock->established_remote_addr.port, sock->seq, sock->ack,
                           DEFAULT_HEADER_LEN, plen, SYN_FLAG_MASK, 1, 0, NULL, 0);
   // 防止分片？
   sendToLayer3(msg, plen);
@@ -142,6 +145,9 @@ int tju_connect(tju_tcp_t *sock, tju_sock_addr target_addr)
   // 设定超时重传定时器？
   while (sock->state != ESTABLISHED)
     ;
+  hashval = cal_hash(sock->established_local_addr.ip, sock->established_local_addr.port, sock->established_remote_addr.ip, sock->established_remote_addr.port);
+
+  established_socks[hashval] = sock;
 
   return 0;
 }
@@ -154,13 +160,15 @@ int tju_send(tju_tcp_t *sock, const void *buffer, int len)
 
   char *msg;
   // ？
-  uint32_t seq = 464;
-  uint16_t plen = DEFAULT_HEADER_LEN + len;
+  uint32_t seq = sock->seq;
 
+  uint16_t plen = DEFAULT_HEADER_LEN + len;
+  // printf("src %d  dst %d \n", sock->established_local_addr.port, sock->established_remote_addr.port);
   msg = create_packet_buf(sock->established_local_addr.port, sock->established_remote_addr.port, seq, 0,
                           DEFAULT_HEADER_LEN, plen, NO_FLAG, 1, 0, data, len);
 
   sendToLayer3(msg, plen);
+  sock->seq += len;
 
   return 0;
 }
@@ -210,10 +218,11 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
 
   int pkt_seq = get_seq(pkt);
   int pkt_src = get_src(pkt);
+  int pkt_dst = get_dst(pkt);
   int pkt_ack = get_ack(pkt);
   int pkt_plen = get_plen(pkt);
   int pkt_flag = get_flags(pkt);
-
+  // printf("server is recv\n");
   uint32_t data_len = pkt_plen - DEFAULT_HEADER_LEN;
 
   switch (sock->state)
@@ -224,9 +233,12 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
       char *msg;
       uint16_t plen = DEFAULT_HEADER_LEN;
 
-      msg = create_packet_buf(sock->established_local_addr.port, sock->established_remote_addr.port, pkt_ack, pkt_seq + 1,
+      msg = create_packet_buf(pkt_dst, pkt_src, pkt_ack, pkt_seq + 1,
                               DEFAULT_HEADER_LEN, plen, ACK_FLAG_MASK, 1, 0, NULL, 0);
       sendToLayer3(msg, plen);
+      sock->seq = pkt_ack + 1;
+      sock->ack = pkt_seq + 1;
+
       sock->state = ESTABLISHED;
     }
 
@@ -234,62 +246,54 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
   case LISTEN:
     if (pkt_flag == SYN_FLAG_MASK)
     {
-      tju_tcp_t *new_sock = (tju_tcp_t *)malloc(sizeof(tju_tcp_t));
-      memcpy(new_sock, sock, sizeof(tju_tcp_t));
 
+      tju_tcp_t *new_sock = (tju_tcp_t *)malloc(sizeof(tju_tcp_t));
+      new_sock = memcpy(new_sock, sock, sizeof(tju_tcp_t));
       // 标识连接的四元组
       tju_sock_addr remote_addr, local_addr;
       remote_addr.ip = inet_network("172.0.0.2"); // Listen 是 server 端的行为，所以远程地址就是 172.0.0.2
       remote_addr.port = pkt_src;
-      local_addr.ip = sock->bind_addr.ip;
-      local_addr.port = sock->bind_addr.port;
+      // local_addr.ip = sock->bind_addr.ip;
+      // local_addr.port = sock->bind_addr.port;
 
       new_sock->established_local_addr = local_addr;
       new_sock->established_remote_addr = remote_addr;
 
       new_sock->state = SYN_RECV;
 
+      new_sock->ack = pkt_seq + 1;
+
       q_push(sock->half_queue, new_sock);
 
       char *msg;
       uint16_t plen = DEFAULT_HEADER_LEN;
 
-      msg = create_packet_buf(sock->established_local_addr.port, sock->established_remote_addr.port, SERVER_ISN, pkt_seq + 1,
+      msg = create_packet_buf(pkt_dst, pkt_src, SERVER_ISN, pkt_seq + 1,
                               DEFAULT_HEADER_LEN, plen, ACK_FLAG_MASK + SYN_FLAG_MASK, 1, 0, NULL, 0);
       sendToLayer3(msg, plen);
+
+      new_sock->seq = SERVER_ISN + 1;
       // 这是驻留在listen表中的socket，无需改状态
       // sock->state = SYN_RECV;
     }
     // ？后期要做seq和ack检查
     else if (pkt_flag == ACK_FLAG_MASK)
     {
+      // printf("第三次握手开始,半连接队列长度%d\n", q_size(sock->half_queue));
 
-      tju_tcp_t *new_conn = q_pop(sock->half_queue);
-      // new_conn->established_local_addr = sock->bind_addr;
-      // new_conn->established_remote_addr.port = sock->src_port;
-      // new_conn->established_remote_addr.ip = inet_network("172.17.0.2");
+      tju_tcp_t *new_temp_conn = q_pop(sock->half_queue);
+      // printf("pop is ok\n");
+      tju_tcp_t *new_conn = (tju_tcp_t *)malloc(sizeof(tju_tcp_t));
+      memcpy(new_conn, new_temp_conn, sizeof(tju_tcp_t));
+
       new_conn->state = ESTABLISHED;
-      // new_conn->window.wnd_recv->rwnd = INIT_WINDOW_SIZE;
-      // new_conn->window.wnd_recv->expect_seq = seq+1;
-      // new_conn->window.wnd_send->nextseq = sock->window.wnd_send->nextseq;
+
+      new_conn->ack = pkt_seq + 1;
+
       q_push(sock->full_queue, new_conn);
+      // printf("第三次握手完成\n");
     }
     break;
-    // case SYN_RECV:
-    //   if (pkt_flag == ACK_FLAG_MASK)
-    //   {
-
-    //     tju_tcp_t *new_conn = tju_socket();
-    //     new_conn->established_local_addr = sock->bind_addr;
-    //     new_conn->established_remote_addr.port = sock->src_port;
-    //     new_conn->established_remote_addr.ip = inet_network("172.17.0.2");
-    //     new_conn->state = ESTABLISHED;
-    //     // new_conn->window.wnd_recv->rwnd = INIT_WINDOW_SIZE;
-    //     // new_conn->window.wnd_recv->expect_seq = seq+1;
-    //     // new_conn->window.wnd_send->nextseq = sock->window.wnd_send->nextseq;
-    //     push_q(sock->full_queue, new_conn);
-    //     sock->state = LISTEN;
-    //   }
 
   default:
     break;

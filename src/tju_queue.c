@@ -25,7 +25,8 @@ tju_tcp_t *q_pop(sock_queue *q)
   {
     q->len--;
     sock_node *free_it = q->sock_head;
-    tju_tcp_t *ret = (tju_tcp_t *)(sizeof(tju_tcp_t));
+
+    tju_tcp_t *ret = tju_socket();
     memcpy(ret, q->sock_head->node, sizeof(tju_tcp_t));
     q->sock_head = q->sock_head->next;
     if (q->sock_head == NULL)
@@ -33,8 +34,10 @@ tju_tcp_t *q_pop(sock_queue *q)
       q->sock_end = NULL;
     }
     free(free_it);
+
     return ret;
   }
+  // printf("队列空\n");
   return NULL;
 }
 int q_push(sock_queue *q, tju_tcp_t *sock)
