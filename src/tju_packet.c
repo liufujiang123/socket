@@ -101,6 +101,14 @@ uint32_t get_ack(char *msg)
   memcpy(&var, msg + offset, SIZE32);
   return ntohl(var);
 }
+// 特殊 不涉及网络序
+uint32_t set_ack(char *msg, uint32_t ack)
+{
+  int offset = 8;
+  uint32_t temp32 = htonl(ack);
+  memcpy(msg + offset, &temp32, SIZE32);
+  return get_ack(msg);
+}
 uint16_t get_hlen(char *msg)
 {
   int offset = 12;

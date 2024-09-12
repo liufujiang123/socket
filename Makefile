@@ -7,8 +7,12 @@ CC=gcc
 FLAGS = -pthread -g -ggdb -DDEBUG -I$(INC_DIR)
 OBJS = $(BUILD_DIR)/tju_packet.o \
 	   $(BUILD_DIR)/kernel.o \
+		 		 $(BUILD_DIR)/tju_queue.o\
 	   $(BUILD_DIR)/tju_tcp.o \
-		 $(BUILD_DIR)/tju_queue.o
+	   $(BUILD_DIR)/tju_buffer.o \
+	   $(BUILD_DIR)/log.o 
+
+
 
 
 

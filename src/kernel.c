@@ -16,13 +16,13 @@ void onTCPPocket(char *pkt)
   uint32_t remote_ip, local_ip;
   if (strcmp(hostname, "server") == 0)
   { // 自己是服务端 远端就是客户端
-    local_ip = inet_network("172.17.0.3");
-    remote_ip = inet_network("172.17.0.2");
+    local_ip = inet_network(SERVER_IP);
+    remote_ip = inet_network(CLIENT_IP);
   }
   else if (strcmp(hostname, "client") == 0)
   { // 自己是客户端 远端就是服务端
-    local_ip = inet_network("172.17.0.2");
-    remote_ip = inet_network("172.17.0.3");
+    local_ip = inet_network(CLIENT_IP);
+    remote_ip = inet_network(SERVER_IP);
   }
 
   int hashval;
@@ -32,8 +32,10 @@ void onTCPPocket(char *pkt)
   // 首先查找已经建立连接的socket哈希表
   if (established_socks[hashval] != NULL)
   {
+
+    // printf("tju_handle_packet(established_socks[hashval], pkt)\n");
     tju_handle_packet(established_socks[hashval], pkt);
-    printf("tju_handle_packet(established_socks[hashval], pkt)\n");
+
     return;
   }
 
@@ -41,8 +43,9 @@ void onTCPPocket(char *pkt)
   hashval = cal_hash(local_ip, local_port, 0, 0); // 监听的socket只有本地监听ip和端口 没有远端
   if (listen_socks[hashval] != NULL)
   {
+    // printf("tju_handle_packet(listen_socks[hashval], pkt)\n");
     tju_handle_packet(listen_socks[hashval], pkt);
-    printf("tju_handle_packet(listen_socks[hashval], pkt)\n");
+
     return;
   }
 
@@ -60,7 +63,7 @@ void sendToLayer3(char *packet_buf, int packet_len)
 {
   if (packet_len > MAX_LEN)
   {
-    printf("ERROR: 不能发送超过 MAX_LEN 长度的packet, 防止IP层进行分片\n");
+    printf("ERROR: 不能发送超过 MAX_LEN 长度的packet, 防止IP层进行分片\n  %d", packet_len);
     return;
   }
 
@@ -74,12 +77,12 @@ void sendToLayer3(char *packet_buf, int packet_len)
   int rst;
   if (strcmp(hostname, "server") == 0)
   {
-    conn.sin_addr.s_addr = inet_addr("172.17.0.2");
+    conn.sin_addr.s_addr = inet_addr(CLIENT_IP);
     rst = sendto(BACKEND_UDPSOCKET_ID, packet_buf, packet_len, 0, (struct sockaddr *)&conn, sizeof(conn));
   }
   else if (strcmp(hostname, "client") == 0)
   {
-    conn.sin_addr.s_addr = inet_addr("172.17.0.3");
+    conn.sin_addr.s_addr = inet_addr(SERVER_IP);
     rst = sendto(BACKEND_UDPSOCKET_ID, packet_buf, packet_len, 0, (struct sockaddr *)&conn, sizeof(conn));
   }
   else

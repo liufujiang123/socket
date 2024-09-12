@@ -11,10 +11,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "global.h"
 #include <pthread.h>
 #include <sys/select.h>
 #include <arpa/inet.h>
+#include <sys/time.h>
+#include <math.h>
+#include "log.h"
+
+#define DEBUG
 
 // 单位是byte
 #define SIZE32 4
@@ -54,38 +58,76 @@
 #define CONGESTION_AVOIDANCE 1
 #define FAST_RECOVERY 2
 
+// #define SERVER_IP "172.17.0.6"
+// #define CLIENT_IP "172.17.0.5"
+
+#define SERVER_IP "172.17.0.3"
+#define CLIENT_IP "172.17.0.2"
+
 // TCP 接受窗口大小
 #define TCP_RECVWN_SIZE 32 * MAX_DLEN // 比如最多放32个满载数据包
+
+#define TCP_BUF_SIZE 10000
+
+#define TIMEOUT_INTERVAL 1000 // 超时时间间隔（毫秒）
+#define ALPHA 0.125
+#define BETA 0.25
+#define K 4
+
+typedef struct send_buf_node send_buf_node;
+
+typedef struct send_buf_node
+{
+  int num;                  // 编号 用来解决乱序
+  struct timeval send_time; // 时间戳
+  int flag;                 // 是否发送
+  char *data;               // 包头+数据
+  int data_len;
+  send_buf_node *next_node;
+} send_buf_node;
+typedef struct send_buf
+{
+  send_buf_node *buf_head;
+  send_buf_node *buf_end;
+  // 已使用的空间 按报文计数
+  int len;
+  // 已创建的字节数
+  int buf_len;
+} send_buf;
 
 // TCP 发送窗口
 // 注释的内容如果想用就可以用 不想用就删掉 仅仅提供思路和灵感
 typedef struct
 {
-  uint16_t window_size;
-
-  //   uint32_t base;
-  //   uint32_t nextseq;
-  //   uint32_t estmated_rtt;
-  //   int ack_cnt;
-  //   pthread_mutex_t ack_cnt_lock;
-  //   struct timeval send_time;
-  //   struct timeval timeout;
-  //   uint16_t rwnd;
+  // uint16_t window_size;
+  pthread_mutex_t window_send_lock;
+  send_buf *window_send_buf;
+  pthread_mutex_t window_wait_ack_lock;
+  send_buf *window_wait_ack_buf;
+  uint32_t base;
+  uint32_t nextseq;
+  uint32_t estmated_rtt;
+  int ack_cnt;
+  pthread_mutex_t ack_cnt_lock;
+  // struct timeval send_time;
+  struct timeval timeout;
+  uint16_t rwnd;
   //   int congestion_status;
   //   uint16_t cwnd;
   //   uint16_t ssthresh;
 } sender_window_t;
 
 // TCP 接受窗口
-// 注释的内容如果想用就可以用 不想用就删掉 仅仅提供思路和灵感
+
 typedef struct
 {
+  // 按照字节流放置数据
   char received[TCP_RECVWN_SIZE];
-
+  uint32_t base;
   //   received_packet_t* head;
   //   char buf[TCP_RECVWN_SIZE];
-  //   uint8_t marked[TCP_RECVWN_SIZE];
-  //   uint32_t expect_seq;
+  // uint8_t marked[TCP_RECVWN_SIZE];
+  uint32_t expect_seq;
 } receiver_window_t;
 
 // TCP 窗口 每个建立了连接的TCP都包括发送和接受两个窗口
@@ -111,20 +153,23 @@ typedef struct
   tju_sock_addr established_remote_addr; // 存放建立连接后 连接对方的 IP和端口
 
   pthread_mutex_t send_lock; // 发送数据锁
-  char *sending_buf;         // 发送数据缓存区
-  int sending_len;           // 发送数据缓存长度
+  send_buf *sending_buf;     // 发送数据缓存区
+  int sending_len;           // 发送数据缓存长度  按字节
 
   pthread_mutex_t recv_lock; // 接收数据锁
   char *received_buf;        // 接收数据缓存区
-  int received_len;          // 接收数据缓存长度
+  int received_len;          // 接收数据缓存长度 按字节
 
   pthread_cond_t wait_cond; // 可以被用来唤醒recv函数调用时等待的线程
 
   window_t window; // 发送和接受窗口
   struct sock_queue *half_queue;
   struct sock_queue *full_queue;
-  int ack;
-  int seq;
+
+  pthread_mutex_t ack_lock;
+  int ack; // 按字节计数
+  pthread_mutex_t seq_lock;
+  int seq; // 按字节计数
 
 } tju_tcp_t;
 

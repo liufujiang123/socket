@@ -5,6 +5,9 @@
 #include "tju_packet.h"
 #include "kernel.h"
 #include "tju_queue.h"
+#include "tju_buffer.h"
+#include <sys/stat.h>
+
 /*
 创建 TCP socket
 初始化对应的结构体
@@ -50,4 +53,5 @@ int tju_recv(tju_tcp_t *sock, void *buffer, int len);
 int tju_close(tju_tcp_t *sock);
 
 int tju_handle_packet(tju_tcp_t *sock, char *pkt);
+
 #endif

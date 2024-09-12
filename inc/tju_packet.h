@@ -73,6 +73,7 @@ uint16_t get_src(char *msg);
 uint16_t get_dst(char *msg);
 uint32_t get_seq(char *msg);
 uint32_t get_ack(char *msg);
+uint32_t set_ack(char *msg, uint32_t ack);
 uint16_t get_hlen(char *msg);
 uint16_t get_plen(char *msg);
 uint8_t get_flags(char *msg);

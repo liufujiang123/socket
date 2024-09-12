@@ -33,6 +33,7 @@ tju_tcp_t *q_pop(sock_queue *q)
     {
       q->sock_end = NULL;
     }
+
     free(free_it);
 
     return ret;
