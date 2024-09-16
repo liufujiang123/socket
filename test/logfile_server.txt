@@ -1,0 +1,775 @@
+2024-09-15 08:57:35 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-15 08:57:35 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-15 08:57:36 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-15 08:57:36 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-15 08:57:36 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-15 08:57:36 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-15 08:57:36 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:37 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:37 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:37 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 2，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 1377，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 2752，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 4127，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 5502，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 6877，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 8252，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 9627，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 10002，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 11377，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 12752，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 14127，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 15502，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 16877，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 18252，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 19627，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 20002，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 21377，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 22752，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 24127，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 25502，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 26877，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 28252，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 29627，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 30002，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 31377，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 32752，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 34127，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 35502，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 36877，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 38252，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:38 INFO  src/tju_tcp.c:355: 收到包的seq 39627，ack 1，flag 0,adv 0
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:38 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:39 INFO  src/tju_tcp.c:355: 收到包的seq 40002，ack 1，flag 0,adv 0
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:39 INFO  src/tju_tcp.c:355: 收到包的seq 41377，ack 1，flag 0,adv 0
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:383: release 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-15 08:57:39 INFO  src/tju_tcp.c:355: 收到包的seq 42752，ack 1，flag 0,adv 0
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:318: 发送前
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:323: 发送后
+2024-09-15 08:57:39 INFO  src/tju_buffer.c:337: current not null, len 825307441 
+2024-09-16 06:50:07 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:50:07 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:50:08 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:09 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:09 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:50:09 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:50:09 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:50:09 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:50:10 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:10 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:10 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 2，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 1377，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 2752，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 4127，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 5502，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 6877，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 8252，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 9627，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 10002，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 11377，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 12752，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 14127，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 15502，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 16877，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 18252，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 19627，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 20002，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 21377，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 22752，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 24127，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 25502，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 26877，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 28252，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 29627，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 30002，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 31377，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 32752，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 34127，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 35502，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 36877，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 38252，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:11 INFO  src/tju_tcp.c:355: 收到包的seq 39627，ack 1，flag 0,adv 0
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:11 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:50:12 INFO  src/tju_tcp.c:355: 收到包的seq 40002，ack 1，flag 0,adv 0
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:12 INFO  src/tju_tcp.c:355: 收到包的seq 41377，ack 1，flag 0,adv 0
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:50:12 INFO  src/tju_tcp.c:355: 收到包的seq 42752，ack 1，flag 0,adv 0
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:50:12 INFO  src/tju_buffer.c:337: current not null, len 825307441 
+2024-09-16 06:51:27 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:51:27 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:51:28 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:29 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:51:29 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:51:29 INFO  src/tju_tcp.c:37: 进入发送线程
+2024-09-16 06:51:29 INFO  src/tju_tcp.c:40: 回到主线程
+2024-09-16 06:51:29 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:30 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:30 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:30 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 2，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 1377，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 2752，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 4127，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 5502，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 6877，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 8252，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 9627，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 10002，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 11377，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 12752，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 14127，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 15502，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 16877，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 18252，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 19627，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 20002，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 21377，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 22752，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 24127，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 25502，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 26877，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 28252，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 29627，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 30002，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 31377，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 32752，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 34127，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 35502，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 36877，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 38252，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_tcp.c:355: 收到包的seq 39627，ack 1，flag 0,adv 0
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:31 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:62: 发送队列长度 0 
+2024-09-16 06:51:32 INFO  src/tju_tcp.c:355: 收到包的seq 40002，ack 1，flag 0,adv 0
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:32 INFO  src/tju_tcp.c:355: 收到包的seq 41377，ack 1，flag 0,adv 0
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:337: current not null, len 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:383: release 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:386: 出 handlea_ack
+2024-09-16 06:51:32 INFO  src/tju_tcp.c:355: 收到包的seq 42752，ack 1，flag 0,adv 0
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:243: 处理ack,ack 1 ,adv 0 
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:318: 发送前
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:323: 发送后
+2024-09-16 06:51:32 INFO  src/tju_buffer.c:337: current not null, len 825307441 
