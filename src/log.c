@@ -154,6 +154,29 @@ void log_log(int level, const char *file, int line, const char *fmt, ...)
   };
 
   lock();
+  FILE *log_file;
+  char hostname[8];
+  gethostname(hostname, 8);
+  if (strcmp(hostname, "server") == 0)
+  {                                              // 自己是服务端 // 打开日志文件
+    log_file = fopen("logfile_server.txt", "a"); // 使用 "a" 模式追加日志
+    if (!log_file)
+    {
+      perror("Failed to open log file");
+      unlock();
+      return;
+    }
+  }
+  else if (strcmp(hostname, "client") == 0)
+  {                                              // 自己是客户端 // 打开日志文件
+    log_file = fopen("logfile_client.txt", "a"); // 使用 "a" 模式追加日志
+    if (!log_file)
+    {
+      perror("Failed to open log file");
+      unlock();
+      return;
+    }
+  }
 
   if (!L.quiet && level >= L.level)
   {
@@ -175,5 +198,48 @@ void log_log(int level, const char *file, int line, const char *fmt, ...)
     }
   }
 
+  // 将日志写入文件
+  init_event(&ev, log_file);
+  va_start(ev.ap, fmt);
+  file_callback(&ev);
+  va_end(ev.ap);
+
+  // 关闭日志文件
+  fclose(log_file);
+
   unlock();
 }
+
+// void log_log(int level, const char *file, int line, const char *fmt, ...)
+// {
+//   log_Event ev = {
+//       .fmt = fmt,
+//       .file = file,
+//       .line = line,
+//       .level = level,
+//   };
+
+//   lock();
+
+//   if (!L.quiet && level >= L.level)
+//   {
+//     init_event(&ev, stderr);
+//     va_start(ev.ap, fmt);
+//     stdout_callback(&ev);
+//     va_end(ev.ap);
+//   }
+
+//   for (int i = 0; i < MAX_CALLBACKS && L.callbacks[i].fn; i++)
+//   {
+//     Callback *cb = &L.callbacks[i];
+//     if (level >= cb->level)
+//     {
+//       init_event(&ev, cb->udata);
+//       va_start(ev.ap, fmt);
+//       cb->fn(&ev);
+//       va_end(ev.ap);
+//     }
+//   }
+
+//   unlock();
+// }

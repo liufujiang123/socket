@@ -2,8 +2,7 @@
 // len只是这一次包的大小
 send_buf *create_buffer(tju_tcp_t *sock, char *data, int len)
 {
-  log_info("创建buffer");
-  pthread_mutex_lock(&sock->send_lock);
+  pthread_mutex_lock(&(sock->send_lock));
   send_buf *buffer = sock->sending_buf;
   if (buffer == NULL)
     log_error("buffer is null\n");
@@ -37,7 +36,7 @@ send_buf *create_buffer(tju_tcp_t *sock, char *data, int len)
     insert_send_buf_node_back(buffer, sock->sending_buf->len, 0, msg, len - i + DEFAULT_HEADER_LEN);
     sock->sending_buf->buf_len += len - i;
   }
-  pthread_mutex_unlock(&sock->send_lock);
+  pthread_mutex_unlock(&(sock->send_lock));
 
   return buffer;
 }
@@ -52,8 +51,8 @@ void *send_from_buffer(void *v_sock)
   {
     // 锁定发送窗口
     sleep(1);
-    pthread_mutex_lock(&sock->window.wnd_send->window_send_lock);
-    log_info("获得发送锁");
+    pthread_mutex_lock(&(sock->window.wnd_send->window_send_lock));
+    // log_info("获得发送锁");
     if (sock->window.wnd_send->window_send_buf == NULL)
     {
       sock->window.wnd_send->window_send_buf = malloc(sizeof(send_buf));
@@ -72,7 +71,7 @@ void *send_from_buffer(void *v_sock)
       while (current_node != NULL)
       {
         // 获得发送时间
-        gettimeofday(&current_node->send_time, NULL);
+        gettimeofday(&(current_node->send_time), NULL);
 
         pthread_mutex_lock(&(sock->ack_lock));
         // 发送时给ack序号赋值
@@ -81,6 +80,10 @@ void *send_from_buffer(void *v_sock)
 
         // 发送数据包到网络层
         sendToLayer3(current_node->data, current_node->data_len);
+
+        // 放入待确认队列
+        s_push(sock->window.wnd_send->window_wait_ack_buf, current_node);
+
         sock->seq += current_node->data_len - DEFAULT_HEADER_LEN;
         // 移动到下一个节点
         current_node = current_node->next_node;
@@ -102,15 +105,12 @@ bool window_send_is_full(tju_tcp_t *sock)
   // 无法发送窗口内的都送入nextseq即为full
   bool ret;
   ret = (sock->window.wnd_send->base + sock->window.wnd_send->rwnd == sock->window.wnd_send->nextseq);
-#ifdef DEBUG
-  // log_info("base is %d,rwnd is %d,nextseq is %d ", sock->window.wnd_send->base, sock->window.wnd_send->rwnd, sock->window.wnd_send->nextseq);
-#endif
   return ret;
 }
-int s_push(tju_tcp_t *sock, send_buf_node *node)
+int s_push(send_buf *buf, send_buf_node *node)
 {
-  insert_send_buf_node_back(sock->window.wnd_send->window_send_buf, node->num, node->flag, node->data, node->data_len);
-  sock->window.wnd_send->window_send_buf->len++;
+  log_info("放入队列");
+  insert_send_buf_node_back(buf, node->num, node->flag, node->data, node->data_len);
   return 0;
 }
 send_buf_node *s_pop(tju_tcp_t *sock)
@@ -234,10 +234,11 @@ char *buf_recving(tju_tcp_t *sock, char *pkt_data, int data_len)
   memcpy(sock->received_buf, pkt_data, data_len);
 }
 
-// 处理收到的累计确认（包里的数据已放入接收缓冲区）ack_num为ack号
+// 处理收到的累计确认（包里的数据已放入接收缓冲区）ack_num按字节 adv_window 按包 是对方的建议
 // 更新窗口（base，nextseq，adv_window） 清理节点
 void handle_cumulative_ack(tju_tcp_t *sock, uint32_t pkt_src, uint32_t pkt_dst, uint32_t pkt_seq, uint32_t ack_num, uint32_t pkt_len, uint32_t adv_window)
 {
+
   // 所有current != NULL 是为了区分发送方和接收方
   log_info("处理ack,ack %d ,adv %d ", ack_num, adv_window);
 
@@ -246,7 +247,7 @@ void handle_cumulative_ack(tju_tcp_t *sock, uint32_t pkt_src, uint32_t pkt_dst, 
   pthread_mutex_unlock(&sock->ack_lock);
 
   // 处理发送缓冲区
-  pthread_mutex_lock(&sock->send_lock);
+  pthread_mutex_lock(&(sock->send_lock));
   send_buf *sending_buf = sock->sending_buf;
   send_buf_node *current_node = sending_buf->buf_head;
   send_buf_node *prev_node = NULL;
@@ -282,12 +283,12 @@ void handle_cumulative_ack(tju_tcp_t *sock, uint32_t pkt_src, uint32_t pkt_dst, 
 
   // 调整流量窗口
   sock->window.wnd_send->rwnd = adv_window;
-
+  // 指示是否需要对接收端单独发送
+  int flag = 0;
   // 将窗口新增内容放入发送队列
   if (!window_send_is_full(sock))
   {
-    log_info("开始初始化发送队列");
-    log_info("获得窗口锁");
+    log_info("处理ack 初始化发送队列");
     send_buf_node *current = sock->sending_buf->buf_head;
     // 移动到发送缓冲区的待放入发送队列的位置
     while (current != NULL && current->num != sock->window.wnd_send->nextseq)
@@ -296,7 +297,6 @@ void handle_cumulative_ack(tju_tcp_t *sock, uint32_t pkt_src, uint32_t pkt_dst, 
     }
     for (int i = sock->window.wnd_send->nextseq; i < sock->window.wnd_send->base + sock->window.wnd_send->rwnd; i++)
     {
-      log_info("进入for循环");
       if (current != NULL)
       {
         log_info("插入发送队列");
@@ -304,104 +304,86 @@ void handle_cumulative_ack(tju_tcp_t *sock, uint32_t pkt_src, uint32_t pkt_dst, 
         // 更改窗口的nextseq
         sock->window.wnd_send->nextseq++;
         current = current->next_node;
-      }
-      else
-      {
-        // 这种情况适用于服务端，无发送缓冲区 或者发送缓冲区结束的客户端
-        //  发送队列为空，主要应对服务器；  对于客户端，若发送缓冲区不空，则进行简单确认 否则终止
-        char *msg;
-        uint16_t plen = DEFAULT_HEADER_LEN;
-        msg = create_packet_buf(pkt_dst, pkt_src, sock->seq, sock->ack,
-                                DEFAULT_HEADER_LEN, plen, NO_FLAG, 1, 0, NULL, 0);
-        sendToLayer3(msg, plen);
-        // 若是无数据，仍是老ack
-        sock->ack += pkt_seq + pkt_len - DEFAULT_HEADER_LEN;
-        break;
-        // else
-        // { // 客户端所有内容发送完成  服务端发送端为空
-        //   //tju_close(sock);
-        // }
+        flag = 1;
       }
     }
   }
+  if (flag == 0)
+  {
+    // 这种情况适用于服务端，无发送缓冲区 或者发送缓冲区结束的客户端
+    //  发送队列为空，主要应对服务器；
+    char *msg;
+    uint16_t plen = DEFAULT_HEADER_LEN;
+    // 建议对方窗口
+    log_info("发送前");
+
+    msg = create_packet_buf(pkt_dst, pkt_src, sock->seq, sock->ack,
+                            DEFAULT_HEADER_LEN, plen, NO_FLAG, sock->window.wnd_send->adv_window, 0, NULL, 0);
+    sendToLayer3(msg, plen);
+    log_info("发送后");
+  }
   pthread_mutex_unlock(&(sock->window.wnd_send->window_send_lock));
-  pthread_mutex_unlock(&sock->send_lock);
+  pthread_mutex_unlock(&(sock->send_lock));
 
   // 处理窗口的待确认队列
-  pthread_mutex_lock(&sock->window.wnd_send->window_wait_ack_lock);
+  pthread_mutex_lock(&(sock->window.wnd_send->window_wait_ack_lock));
 
-  send_buf *window_wait_ack_buf = sock->window.wnd_send->window_wait_ack_buf;
-  current_node = window_wait_ack_buf->buf_head;
-  prev_node = NULL;
+  current_node = sock->window.wnd_send->window_wait_ack_buf->buf_head;
+
+  send_buf_node *pre = NULL;
+
   int window_released_len = 0;
+
+  log_info("current not null, len %d ", sock->window.wnd_send->window_wait_ack_buf->len);
   for (int i = 0; i < sock->window.wnd_send->window_wait_ack_buf->len; i++)
   {
+    log_info("current num %d , current base %d ", current_node->num, sock->window.wnd_send->base);
     if (current_node == NULL)
       break;
     else if (current_node->num < sock->window.wnd_send->base)
     {
-      send_buf_node *temp = current_node;
-      current_node = current_node->next_node;
+      send_buf_node *temp;
 
+      if (pre == NULL)
+      {
+        temp = current_node;
+        current_node = current_node->next_node;
+        sock->window.wnd_send->window_wait_ack_buf->buf_head = current_node;
+        log_info("wait len %d ", sock->window.wnd_send->window_wait_ack_buf->len);
+      }
+      else
+      {
+        temp = current_node;
+        pre->next_node = current_node->next_node;
+        current_node = current_node->next_node;
+      }
       // 释放已确认的节点
       free(temp->data);
       free(temp);
 
-      // 更新缓冲区头节点
-      if (prev_node == NULL)
-      {
-        window_wait_ack_buf->buf_head = current_node;
-      }
-      else
-      {
-        prev_node->next_node = current_node;
-      }
-
       // 如果当前节点是尾节点，更新尾节点
       if (current_node == NULL)
       {
-        window_wait_ack_buf->buf_end = prev_node;
+        sock->window.wnd_send->window_wait_ack_buf->buf_end = prev_node;
         break;
       }
-
       // 增加释放的长度
       window_released_len++;
     }
     else
     {
       // 滑动
-      prev_node = prev_node->next_node;
+      prev_node = current_node;
       current_node = current_node->next_node;
     }
   }
 
   // 更新发送窗口的发送队列的长度
-  window_wait_ack_buf->len -= window_released_len;
+  sock->window.wnd_send->window_wait_ack_buf->len -= window_released_len;
+  log_info("release %d ", window_released_len);
 
-  pthread_mutex_unlock(&sock->window.wnd_send->window_wait_ack_lock);
-}
-
-// 通过ack_num获得对应发送缓冲区包的位置
-int get_send_buf_pkt_pos(tju_tcp_t *sock, int ack_num)
-{
-  // buf_head是发送窗口开始的地方
-  send_buf *buffer = sock->sending_buf;
-  send_buf_node *current_node = buffer->buf_head;
-
-  // 遍历发送缓冲区，定位
-  while (current_node != NULL && get_seq(current_node->data) + get_plen(current_node->data) - DEFAULT_HEADER_LEN < ack_num)
-  {
-    send_buf_node *temp = current_node;
-    current_node = current_node->next_node;
-    if (current_node == buffer->buf_head)
-    {
-      buffer->buf_head = NULL;
-      buffer->buf_end = NULL;
-      return 0;
-      break;
-    }
-  }
-  return current_node->num;
+  pthread_mutex_unlock(&(sock->window.wnd_send->window_wait_ack_lock));
+  log_info("出 handlea_ack");
 }
 
 void init_send_buf(send_buf **buffer)

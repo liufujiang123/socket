@@ -12,6 +12,7 @@
 #include <stdarg.h>
 #include <stdbool.h>
 #include <time.h>
+#include "global.h"
 
 #define LOG_VERSION "0.1.0"
 #define LOG_USE_COLOR

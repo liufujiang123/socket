@@ -112,6 +112,7 @@ typedef struct
   // struct timeval send_time;
   struct timeval timeout;
   uint16_t rwnd;
+  uint16_t adv_window;
   //   int congestion_status;
   //   uint16_t cwnd;
   //   uint16_t ssthresh;

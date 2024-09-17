@@ -149,14 +149,14 @@ int tju_send(tju_tcp_t *sock, const void *buffer, int len)
 #ifdef DEBUG
   // log_info("调用tju_send");
 #endif
-  log_info("调用tju_send");
+  //  log_info("调用tju_send");
   // 这里当然不能直接简单地调用sendToLayer3
   create_buffer(sock, buffer, len);
 
   // ？
   // 初始化发送窗口
   pthread_mutex_lock(&(sock->window.wnd_send->window_send_lock));
-  log_info("获得窗口锁");
+  // log_info("获得窗口锁");
   if (!window_send_is_full(sock))
   {
     // log_info("开始初始化发送队列");
@@ -167,7 +167,7 @@ int tju_send(tju_tcp_t *sock, const void *buffer, int len)
     }
     for (int i = sock->window.wnd_send->nextseq; i < sock->window.wnd_send->base + sock->window.wnd_send->rwnd; i++)
     {
-      log_info("进入for循环");
+      // log_info("进入for循环");
       if (current != NULL)
       {
         log_info("插入发送队列");
@@ -239,9 +239,11 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
   int pkt_ack = get_ack(pkt);
   int pkt_plen = get_plen(pkt);
   int pkt_flag = get_flags(pkt);
-  int pkt_adv = get_advertised_window(pkt);
+  // 转化成字节包
+  int pkt_adv = get_advertised_window(pkt) / MAX_DLEN;
   // printf("server is recv\n");
   uint32_t data_len = pkt_plen - DEFAULT_HEADER_LEN;
+  // log_info("收到包的seq %d，ack %d，flag %d", pkt_seq, pkt_ack, pkt_flag);
 
   switch (sock->state)
   {
@@ -267,6 +269,9 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
       // 初始化缓冲区
       init_send_buf(&sock->sending_buf);
       sock->received_buf = (char *)malloc(MAX_LEN * TCP_BUF_SIZE);
+
+      // 初始化建议窗口
+      sock->window.wnd_send->adv_window = TCP_RECVWN_SIZE;
 
       sock->state = ESTABLISHED;
     }
@@ -298,7 +303,7 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
       uint16_t plen = DEFAULT_HEADER_LEN;
 
       msg = create_packet_buf(pkt_dst, pkt_src, SERVER_ISN, pkt_seq + 1,
-                              DEFAULT_HEADER_LEN, plen, ACK_FLAG_MASK + SYN_FLAG_MASK, 1, 0, NULL, 0);
+                              DEFAULT_HEADER_LEN, plen, ACK_FLAG_MASK + SYN_FLAG_MASK, TCP_RECVWN_SIZE, 0, NULL, 0);
       sendToLayer3(msg, plen);
 
       new_sock->seq = SERVER_ISN + 1;
@@ -322,6 +327,8 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
       new_conn->window.wnd_recv->expect_seq = new_conn->ack;
       memset(new_conn->window.wnd_recv->received, -1, TCP_RECVWN_SIZE);
 
+      // 建议窗口大小
+      new_conn->window.wnd_send->adv_window = TCP_BUF_SIZE;
       q_push(sock->full_queue, new_conn);
     }
     break;
@@ -342,11 +349,41 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
       sock->state = CLOSE_WAIT;
     }
     else if (pkt_flag == NO_FLAG)
-      log_info("收到包的seq %d，ack %d，flag %d", pkt_seq, pkt_ack, pkt_flag);
     { // 发送ack（1.发送端 放入发送队列等同，2.接收端 发送队列空，直接发送ack）
       // 发送缓冲区和待确认队列释放确认的节点 更新窗口
       // 窗口内的新增节点放入发送队列
-      // 服务端和客户端
+      log_info("收到包的seq %d，ack %d，flag %d,adv %d", pkt_seq, pkt_ack, pkt_flag, pkt_adv);
+      // 接收端 能放下
+      pthread_mutex_lock(&(sock->recv_lock));
+      if ((pkt_plen - DEFAULT_HEADER_LEN > 0) && pkt_seq + pkt_plen - DEFAULT_HEADER_LEN)
+      {
+        memcpy(sock->window.wnd_recv->received + pkt_seq - sock->window.wnd_recv->base, pkt + DEFAULT_HEADER_LEN, pkt_plen - DEFAULT_HEADER_LEN);
+        if (pkt_seq == sock->window.wnd_recv->expect_seq)
+        {
+          // 放入接收窗口，处理乱序
+          sock->window.wnd_recv->expect_seq += pkt_plen - DEFAULT_HEADER_LEN;
+          for (int i = sock->window.wnd_recv->expect_seq - sock->window.wnd_recv->base; i < TCP_RECVWN_SIZE; i++)
+          {
+            if (sock->window.wnd_recv->received[i] == -1)
+            {
+              sock->window.wnd_recv->expect_seq++;
+            }
+            else
+              break;
+          }
+          // 放入接收缓冲区
+          int next = sock->window.wnd_recv->expect_seq - sock->window.wnd_recv->base;
+          memcpy(sock->received_buf, sock->window.wnd_recv->received, sock->window.wnd_recv->expect_seq - sock->window.wnd_recv->base);
+          memcpy(sock->window.wnd_recv->received, sock->window.wnd_recv->received + next, TCP_RECVWN_SIZE - next);
+          memset(sock->window.wnd_recv->received + (TCP_RECVWN_SIZE - next), -1, next);
+          sock->window.wnd_send->adv_window = TCP_RECVWN_SIZE;
+        }
+      }
+      // 如果可以 更新建议接收窗口
+      pthread_mutex_unlock(&(sock->recv_lock));
+
+      // 发送端
+
       handle_cumulative_ack(sock, pkt_src, pkt_dst, pkt_seq, pkt_ack, pkt_plen, pkt_adv);
     }
     break;
@@ -406,44 +443,6 @@ int tju_handle_packet(tju_tcp_t *sock, char *pkt)
   default:
     break;
   }
-
-  // 把收到的数据放到接受窗口
-  pthread_mutex_lock(&(sock->recv_lock));
-  // 加锁
-
-  // 接收窗口处理乱序
-  // 能完全进入窗口的放入窗口中
-  // 确定建议的流量控制窗口
-  // 通过长度判断进行区分接收端和发送端
-  if ((pkt_plen - DEFAULT_HEADER_LEN != 0) && pkt_seq - sock->window.wnd_recv->base + pkt_plen - DEFAULT_HEADER_LEN <= TCP_RECVWN_SIZE)
-  {
-    log_info("处理接收窗口");
-    memcpy(sock->window.wnd_recv->received + pkt_seq - sock->window.wnd_recv->base, pkt + DEFAULT_HEADER_LEN, pkt_plen - DEFAULT_HEADER_LEN);
-    if (sock->window.wnd_recv->expect_seq == pkt_seq)
-      sock->window.wnd_recv->expect_seq += pkt_plen - DEFAULT_HEADER_LEN;
-
-    for (int i = sock->window.wnd_recv->expect_seq; i < sock->window.wnd_recv->base + TCP_RECVWN_SIZE; i++)
-    { // 确定最后一个待有序字节的位置
-      if (sock->window.wnd_recv->received[i] == -1)
-      {
-        sock->window.wnd_recv->expect_seq++;
-      }
-      else
-        break;
-    }
-    // // 应对接收端，区分接收端和发送端
-    // if (flag)
-    // {
-    //   sock->ack = sock->window.wnd_recv->expect_seq;
-    //   char *msg;
-    //   uint16_t plen = DEFAULT_HEADER_LEN;
-    //   msg = create_packet_buf(pkt_dst, pkt_src, sock->seq, sock->ack,
-    //                           DEFAULT_HEADER_LEN, plen, NO_FLAG, 1, 0, NULL, 0);
-    //   sendToLayer3(msg, plen);
-    // }
-  }
-  pthread_mutex_unlock(&(sock->recv_lock)); // 解锁
-
   return 0;
 }
 
